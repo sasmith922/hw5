@@ -37,6 +37,7 @@ bool schedule(
     }
     sched.clear();
     // Add your code below
+    // implementation is very similar to n-queens problem
 
 
 
