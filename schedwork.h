@@ -14,6 +14,8 @@ typedef std::vector<std::vector<bool>> AvailabilityMatrix;
 // to work on each of the n days
 typedef std::vector<std::vector<Worker_T> > DailySchedule;
 
+typedef std::vector<size_t> workerShifts; // vector which has the amount of shifts each worker is working
+
 /**
  * @brief Produces a work schedule given worker availability,
  *        the number of needed workers per day, and the maximum 
@@ -37,5 +39,21 @@ bool schedule(
     const size_t maxShifts,
     DailySchedule& sched
 );
+
+// helper that updates the availabilities in schedule matrix
+void updateMatrix(DailySchedule& sched,
+    workerShifts& shifts,
+    size_t day,
+    Worker_T worker,
+    int change); 
+
+// helper function that is our recursive backtracking search function
+bool search(const AvailabilityMatrix& avail,
+    const size_t dailyNeed,
+    const size_t maxShifts,
+    DailySchedule& sched,
+    workerShifts& shifts,
+    size_t day);
+
 
 #endif
